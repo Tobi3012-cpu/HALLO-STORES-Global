@@ -11,8 +11,9 @@ import NewArrivalsPage from './pages/NewArrivalsPage';
 import AdminPage from './pages/AdminPage';
 import Spinner from './components/Spinner';
 import CheckoutPage from './pages/CheckoutPage';
-import OrderTrackingPage from './pages/OrderTrackingPage';
+
 import AdminLogin from './pages/AdminLogin'; // <-- Import
+import OrderTrackingPage from './pages/OrderTrackingPage';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
