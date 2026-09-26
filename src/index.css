@@ -975,6 +975,106 @@ input, textarea, select { font-family: inherit; font-size: 16px; }
   letter-spacing: 0.3px;
   text-transform: uppercase;
 }
+/* ==========================================
+   Alert Modal
+   ========================================== */
+.alert-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 250;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: fadeIn 0.2s ease;
+}
+
+.alert-modal {
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  padding: 32px 24px 24px;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.35);
+  animation: modalPop 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.alert-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: var(--text-muted);
+  padding: 6px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alert-close:hover {
+  background-color: var(--bg-light);
+  color: var(--dark);
+}
+
+.alert-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.alert-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -0.3px;
+}
+
+.alert-message {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 24px;
+}
+
+.alert-btn {
+  width: 100%;
+  color: #FFFFFF;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  transition: all 0.2s;
+  min-height: 48px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.alert-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  filter: brightness(0.95);
+}
+
+.alert-btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 640px) {
+  .alert-modal {
+    padding: 28px 20px 20px;
+    max-width: 100%;
+  }
+  .alert-title { font-size: 1.125rem; }
+}
 .btn-spinner {
   animation: spinFast 0.8s linear infinite;
 }

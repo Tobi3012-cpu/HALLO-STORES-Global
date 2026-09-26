@@ -6,6 +6,7 @@ import { Trash2, Plus, Minus, ArrowLeft, Loader2 } from 'lucide-react';
 import PaystackPop from '@paystack/inline-js';
 import SuccessModal from '../components/SuccessModal';
 import ConfirmingModal from '../components/ConfirmingModal';
+import AlertModal from '../components/AlertModal';
 
 export default function CheckoutPage() {
   const { cart, cartTotal, increaseQuantity, decreaseQuantity, removeFromCart, clearCart } = useCart();
@@ -14,6 +15,22 @@ export default function CheckoutPage() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [successData, setSuccessData] = useState(null);
   const [isConfirming, setIsConfirming] = useState(false);
+
+  // Alert state
+  const [alert, setAlert] = useState({
+    isOpen: false,
+    type: 'error',
+    title: '',
+    message: '',
+  });
+
+  const showAlert = (type, title, message) => {
+    setAlert({ isOpen: true, type, title, message });
+  };
+
+  const closeAlert = () => {
+    setAlert((prev) => ({ ...prev, isOpen: false }));
+  };
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,11 +45,8 @@ export default function CheckoutPage() {
     e.preventDefault();
     setIsProcessing(true);
 
-    // Shipping: free over ₦100,000, otherwise ₦2,000
-    const shippingCost = cartTotal > 100000 ? 0 : 2000;
-    const finalTotal = cartTotal + shippingCost;
-
-    // Paystack expects the amount in kobo (₦1 = 100 kobo)
+    // No shipping — final total is just the cart total
+    const finalTotal = cartTotal;
     const amountInKobo = Math.round(finalTotal * 100);
 
     try {
@@ -56,6 +70,10 @@ export default function CheckoutPage() {
           })),
         }),
       });
+
+      if (!initResponse.ok) {
+        throw new Error('Server error');
+      }
 
       const initData = await initResponse.json();
 
@@ -85,26 +103,51 @@ export default function CheckoutPage() {
               }, 1200);
             } else {
               setIsConfirming(false);
-              alert('Payment verification failed. Please contact support.');
+              showAlert(
+                'error',
+                'Verification Failed',
+                'We could not verify your payment. If you were charged, please contact support with your order details.'
+              );
             }
           } catch (error) {
             console.error("Verification error:", error);
             setIsConfirming(false);
-            alert('Could not verify payment.');
+            showAlert(
+              'warning',
+              'Connection Issue',
+              'We could not verify your payment due to a network issue. Please check your internet connection or contact support.'
+            );
           } finally {
             setIsProcessing(false);
           }
         },
         onCancel: () => {
           setIsProcessing(false);
-          alert('Payment window closed.');
+          showAlert(
+            'info',
+            'Payment Cancelled',
+            'You closed the payment window. Your order has not been placed. You can try again whenever you are ready.'
+          );
         },
       });
 
     } catch (error) {
       console.error("Initialization error:", error);
-      alert('An error occurred while starting the payment process.');
       setIsProcessing(false);
+      
+      if (!navigator.onLine) {
+        showAlert(
+          'warning',
+          'No Internet Connection',
+          'Please check your internet connection and try again.'
+        );
+      } else {
+        showAlert(
+          'error',
+          'Payment Unavailable',
+          'We could not start the payment process. Please try again in a moment or contact support if the issue persists.'
+        );
+      }
     }
   };
 
@@ -122,9 +165,6 @@ export default function CheckoutPage() {
       </div>
     );
   }
-
-  const shippingCost = cartTotal > 100000 ? 0 : 2000;
-  const finalTotal = cartTotal + shippingCost;
 
   return (
     <div className="container section">
@@ -149,7 +189,7 @@ export default function CheckoutPage() {
 
       <div className="checkout-grid">
         <div className="checkout-form-container">
-          <h2>Contact & Shipping Information</h2>
+          <h2>Contact & Delivery Information</h2>
           <form onSubmit={handleSubmit} className="checkout-form">
             <div className="form-group">
               <label>Full Name</label>
@@ -217,7 +257,7 @@ export default function CheckoutPage() {
                   Opening Payment...
                 </>
               ) : (
-                `Pay Now - ₦${finalTotal.toFixed(2)}`
+                `Pay Now - ₦${cartTotal.toFixed(2)}`
               )}
             </button>
           </form>
@@ -265,17 +305,9 @@ export default function CheckoutPage() {
           </div>
 
           <div className="summary-totals">
-            <div className="summary-row">
-              <span>Subtotal</span>
-              <span>₦{cartTotal.toFixed(2)}</span>
-            </div>
-            <div className="summary-row">
-              <span>Shipping</span>
-              <span>{shippingCost === 0 ? 'Free' : `₦${shippingCost.toFixed(2)}`}</span>
-            </div>
             <div className="summary-row total">
               <span>Total</span>
-              <span>₦{finalTotal.toFixed(2)}</span>
+              <span>₦{cartTotal.toFixed(2)}</span>
             </div>
           </div>
         </div>
@@ -289,6 +321,14 @@ export default function CheckoutPage() {
         customerEmail={successData?.email}
         orderNumber={successData?.orderNumber}
         onClose={handleSuccessClose}
+      />
+
+      <AlertModal
+        isOpen={alert.isOpen}
+        type={alert.type}
+        title={alert.title}
+        message={alert.message}
+        onClose={closeAlert}
       />
     </div>
   );
