@@ -11,6 +11,7 @@ import NewArrivalsPage from './pages/NewArrivalsPage';
 import AdminPage from './pages/AdminPage';
 import Spinner from './components/Spinner';
 import CheckoutPage from './pages/CheckoutPage';
+import OrderTrackingPage from './pages/OrderTrackingPage';
 import AdminLogin from './pages/AdminLogin'; // <-- Import
 
 export default function App() {
@@ -38,6 +39,7 @@ export default function App() {
               <Route path="admin" element={<AdminPage />} />
               <Route path="checkout" element={<CheckoutPage />} /> {/* <-- Add this */}
               <Route path="hallo-control-panel" element={<AdminLogin />} />
+              <Route path="order/:orderNumber" element={<OrderTrackingPage />} />
             </Route>
           </Routes>
         </BrowserRouter>

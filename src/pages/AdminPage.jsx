@@ -1,7 +1,9 @@
 import { useAdmin } from '../context/AdminContext';
 import { featuredProducts } from '../data/products';
 import { ToggleLeft, ToggleRight, Check, RefreshCw } from 'lucide-react';
+import AdminOrders from './AdminOrders';
 
+// Then add <AdminOrders /> inside the admin-grid or below it
 export default function AdminPage() {
   const { 
     isFlashSaleOn, toggleFlashSale, 
@@ -70,6 +72,9 @@ export default function AdminPage() {
             ))}
           </div>
         </div>
+      </div>
+      <div style={{ marginTop: '2rem' }}>
+        <AdminOrders />
       </div>
     </div>
   );

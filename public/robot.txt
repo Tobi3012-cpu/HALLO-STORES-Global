@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /hallo-control-panel
+Disallow: /checkout
+
+Sitemap: https://hallo-stores-global.vercel.app/sitemap.xml

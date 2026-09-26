@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Check, Mail, Sparkles, ShoppingBag, Copy } from 'lucide-react';
+import { Check, Mail, Sparkles, ShoppingBag, Copy, Truck } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function SuccessModal({ 
   isOpen, 
@@ -72,6 +73,15 @@ export default function SuccessModal({
               {copied ? <Check size={16} /> : <Copy size={16} />}
             </span>
           </button>
+        )}
+        {orderNumber && (
+          <Link
+            to={`/order/${orderNumber}`}
+            className="success-track-link"
+            onClick={onClose}
+          >
+            <Truck size={14} /> Track this order
+          </Link>
         )}
 
         {/* Email info */}
