@@ -14,7 +14,7 @@ export default function Navbar() {
   return (
     <header className="navbar">
       <div className="announcement-bar">
-        🔥 Summer Sale is Live! Get up to 60% OFF <Link to="/deals">Shop Now →</Link>
+        🔥Welcome to Hallo stores  <Link to="/deals">Shop Now →</Link>
       </div>
       
       <div className="container nav-content">
