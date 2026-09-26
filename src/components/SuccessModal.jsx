@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Check, Mail, Sparkles, ShoppingBag, Copy, Truck } from 'lucide-react';
+import { Check, Mail, Sparkles, ShoppingBag, Copy, Truck, Package, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function SuccessModal({ 
@@ -74,6 +74,8 @@ export default function SuccessModal({
             </span>
           </button>
         )}
+
+        {/* Track this order link */}
         {orderNumber && (
           <Link
             to={`/order/${orderNumber}`}
@@ -101,6 +103,17 @@ export default function SuccessModal({
           </div>
         </div>
 
+        {/* Find this order later */}
+        <Link
+          to="/track-order"
+          className="success-orders-btn"
+          onClick={onClose}
+        >
+          <Package size={16} />
+          Find Your Order Later
+        </Link>
+
+        {/* Continue Shopping button */}
         <button className="success-continue-btn" onClick={onClose} type="button">
           <ShoppingBag size={16} />
           Continue Shopping

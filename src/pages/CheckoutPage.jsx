@@ -7,8 +7,10 @@ import PaystackPop from '@paystack/inline-js';
 import SuccessModal from '../components/SuccessModal';
 import ConfirmingModal from '../components/ConfirmingModal';
 import AlertModal from '../components/AlertModal';
+import { useMyOrders } from '../context/MyOrdersContext';
 
 export default function CheckoutPage() {
+  const { saveOrder } = useMyOrders();
   const { cart, cartTotal, increaseQuantity, decreaseQuantity, removeFromCart, clearCart } = useCart();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', address: '' });
@@ -94,6 +96,20 @@ export default function CheckoutPage() {
             if (verifyData.status === 'success') {
               setTimeout(() => {
                 setIsConfirming(false);
+                saveOrder({
+                  orderNumber: verifyData.order_number,
+                  email: formData.email,
+                  name: formData.name,
+                  total: cartTotal,
+                  date: new Date().toISOString(),
+                  items: cart.map(item => ({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    quantity: item.quantity,
+                    image: item.image,
+                  })),
+                });
                 setSuccessData({
                   name: formData.name,
                   email: formData.email,

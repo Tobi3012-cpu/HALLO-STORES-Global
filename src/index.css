@@ -1057,7 +1057,125 @@ input, textarea, select { font-family: inherit; font-size: 16px; }
   justify-content: center;
   transition: all 0.2s;
 }
+/* ==========================================
+   My Orders Page
+   ========================================== */
+.my-order-card {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  transition: all 0.2s;
+}
 
+.my-order-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+
+.my-order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
+
+.my-order-label {
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.my-order-number {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--dark);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 4px;
+}
+
+.my-order-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.my-order-total {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.my-order-amount {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin: 0;
+}
+
+.my-order-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+
+.my-order-item-chip {
+  background-color: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 4px 10px;
+  font-size: 0.6875rem;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.my-order-track-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--primary);
+  color: #FFFFFF;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  transition: all 0.2s;
+  min-height: 40px;
+}
+.success-orders-btn {
+  width: 100%;
+  background-color: #EFF6FF;
+  color: var(--primary);
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+  min-height: 48px;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.success-orders-btn:hover {
+  background-color: #DBEAFE;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.my-order-track-btn:hover {
+  background-color: var(--primary-hover);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
 .footer-socials a:hover {
   background-color: var(--primary);
   color: #FFFFFF;

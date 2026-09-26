@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { ShoppingCart, Search, User, Heart, Menu, X } from 'lucide-react';
+import { ShoppingCart, Search, Heart, Menu, X, Package } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useAdmin } from '../context/AdminContext';
 
@@ -35,6 +35,9 @@ export default function Navbar() {
           {isNewArrivalsOn && (
             <NavLink to="/new-arrivals" className={({ isActive }) => isActive ? "active" : ""}>New Arrivals</NavLink>
           )}
+          <NavLink to="/track-order" className={({ isActive }) => isActive ? "active" : ""}>
+            Track Order
+          </NavLink>
         </nav>
 
         <div className="nav-actions">
@@ -42,7 +45,9 @@ export default function Navbar() {
             <input type="text" placeholder="Search for products..." />
             <Search className="search-icon" size={18} />
           </div>
-          <button className="icon-btn hide-mobile"><User size={20} /></button>
+          <Link to="/track-order" className="icon-btn" title="Track Order">
+            <Package size={20} />
+          </Link>
           <button className="icon-btn hide-mobile"><Heart size={20} /></button>
           <button className="icon-btn" onClick={() => setIsCartOpen(true)}>
             <ShoppingCart size={20} />
@@ -67,6 +72,9 @@ export default function Navbar() {
             New Arrivals
           </NavLink>
         )}
+        <NavLink to="/track-order" onClick={closeMenu} className={({ isActive }) => isActive ? "active" : ""}>
+          Track Order
+        </NavLink>
       </div>
     </header>
   );
