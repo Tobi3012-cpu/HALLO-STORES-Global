@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { API_URL } from '../config';
-import { Package, Truck, Home, CheckCircle2, Clock, XCircle, Loader2, RefreshCw } from 'lucide-react';
+import { Package, Truck, Home, CheckCircle2, Clock, XCircle, Loader2, RefreshCw, MessageCircle } from 'lucide-react';
+import { openWhatsApp, buildOrderMessage } from '../utils/whatsapp';
 
 const STATUS_OPTIONS = [
   { value: 'paid',       label: 'Paid',       icon: CheckCircle2, color: '#2563EB' },
@@ -131,6 +132,28 @@ export default function AdminOrders() {
                       <p>{order.tracking_number}</p>
                     </div>
                   )}
+
+                  {/* WhatsApp Actions */}
+                  <div className="order-actions" style={{ marginBottom: '12px' }}>
+                    <strong style={{ fontSize: '0.8125rem', display: 'block', marginBottom: '0.5rem' }}>
+                      📱 Message Customer
+                    </strong>
+                    <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                      <button
+                        onClick={() => openWhatsApp(order.customer_phone, buildOrderMessage(order))}
+                        className="whatsapp-action-btn"
+                      >
+                        <MessageCircle size={14} />
+                        Send WhatsApp ({order.status})
+                      </button>
+                      <a
+                        href={`tel:${order.customer_phone}`}
+                        className="call-action-btn"
+                      >
+                        📞 Call
+                      </a>
+                    </div>
+                  </div>
 
                   <div className="order-actions">
                     <strong style={{ fontSize: '0.8125rem', display: 'block', marginBottom: '0.5rem' }}>Update Status</strong>
