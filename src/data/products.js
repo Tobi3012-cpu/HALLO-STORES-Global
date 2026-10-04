@@ -100,7 +100,7 @@ export const featuredProducts = [
     id: 4,
     categoryId: 1,
     name: 'ANYRC Pocket Mini RC Drone',
-    price: 1000,
+    price: 35000,
     oldPrice: 45000,
     rating: 4.6,
     reviews: 1365,
