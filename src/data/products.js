@@ -154,7 +154,7 @@ export const featuredProducts = [
       'https://i.pinimg.com/736x/bd/c6/ea/bdc6eae3f506497bb2510dd40c7a6850.jpg',
       'https://i.pinimg.com/736x/62/8b/7f/628b7f14ecd2d1740f7f0b99c4fb0e44.jpg',
       'https://i.pinimg.com/1200x/4d/71/aa/4d71aa4331033401382edbbdfd608b6c.jpg',
-      'https://i.pinimg.com/1200x/ba/aa/45/baaa456c24de8917e886a7adce16fbc3.jpg',
+      'https://i.pinimg.com/736x/71/95/ba/7195ba9be20694931effe766bb9f28e3.jpg',
     ],
     badge: '20% OFF',
     description: 'Ultimate Pocket Emulation — 15,000+ Classic Games in the Palm of Your Hand. The R36S sets the benchmark for budget retro handhelds. Powered by a RK3326 Quad-Core 64-bit processor and running on ArkOS (Linux), it supports 15,000+ classic titles across 20+ retro gaming platforms. Equipped with dual analog joysticks and a sharp 3.5" IPS display, it runs 2D classics and early 3D PlayStation/N64 titles.',
@@ -186,9 +186,9 @@ export const featuredProducts = [
     reviews: 456,
     image: 'https://i.pinimg.com/1200x/da/5c/7d/da5c7d24c61c312c9f64aa74687f8478.jpg',
     gallery: [
-      'https://i.pinimg.com/1200x/da/5c/7d/da5c7d24c61c312c9f64aa74687f8478.jpg',
-      'https://i.pinimg.com/736x/bd/c6/ea/bdc6eae3f506497bb2510dd40c7a6850.jpg',
-      'https://i.pinimg.com/1200x/ba/aa/45/baaa456c24de8917e886a7adce16fbc3.jpg',
+      'https://i.pinimg.com/1200x/8f/44/51/8f4451dac505186af61854c406dd7825.jpg',
+      'blob:https://gemini.google.com/654b525f-3204-4b7f-b78c-877bc40529e5',
+      'https://i.pinimg.com/736x/4e/68/ce/4e68ce5f5ebe111322b392c74d9254ba.jpg',
     ],
     badge: '30% OFF',
     description: 'Pure 8-Bit Nostalgia — 400 Arcade Classics Ready to Play. Revisit the golden age of 8-bit gaming with the SUP 400-in-1 Game Console. Lightweight, compact, and pre-loaded with 400 classic arcade, shooter, and platforming games, this handheld requires no memory cards or game downloads. Plug it directly into your TV via the included AV cable for big-screen multiplayer action.',
@@ -219,8 +219,8 @@ export const featuredProducts = [
     image: 'https://i.pinimg.com/1200x/ba/aa/45/baaa456c24de8917e886a7adce16fbc3.jpg',
     gallery: [
       'https://i.pinimg.com/1200x/ba/aa/45/baaa456c24de8917e886a7adce16fbc3.jpg',
-      'https://i.pinimg.com/736x/bd/c6/ea/bdc6eae3f506497bb2510dd40c7a6850.jpg',
-      'https://i.pinimg.com/1200x/4d/71/aa/4d71aa4331033401382edbbdfd608b6c.jpg',
+      'https://i.pinimg.com/1200x/dd/f3/4f/ddf34f47fba53dcce187782a66b33a58.jpg',
+      
     ],
     badge: '20% OFF',
     description: 'Big Screen Powerhouse — 20,000+ Games up to PS2 & PSP. Built for serious gamers who want an immersive handheld experience, the M28 combines a massive 7.1-inch HD IPS screen with an 8-core processor capable of running heavy 3D titles. With over 20,000 games pre-loaded across 30+ emulator systems, it handles 3D retro systems like PlayStation 2, PSP, Dreamcast, and N64. Featuring RGB joysticks and dual vibration motors, it delivers modern console-grade controls.',
