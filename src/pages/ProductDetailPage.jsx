@@ -283,7 +283,7 @@ export default function ProductDetailPage() {
           {/* Trust strip */}
           <div className="product-trust-strip">
             <div><Truck size={16} /> <span>Fast delivery</span></div>
-            <div><RotateCcw size={16} /> <span>Returns accepted</span></div>
+           
             <div><ShieldCheck size={16} /> <span>Secure payment</span></div>
           </div>
         </div>
@@ -319,8 +319,7 @@ export default function ProductDetailPage() {
             <div>
               <h4>Delivery Information</h4>
               <p>{product.delivery || 'Delivered within 2-4 business days nationwide.'}</p>
-              <h4>Returns Policy</h4>
-              <p>We accept returns within 7 days of delivery if the item is unused and in its original packaging. Contact us on WhatsApp to start a return.</p>
+              
             </div>
           )}
 
