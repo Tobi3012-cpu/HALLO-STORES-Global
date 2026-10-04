@@ -49,12 +49,7 @@ export const featuredProducts = [
     rating: 4.9,
     reviews: 892,
     image: 'https://i.pinimg.com/1200x/11/f7/96/11f7966185c95156dcc39998012d3d5a.jpg',
-    gallery: [
-      'https://i.pinimg.com/1200x/11/f7/96/11f7966185c95156dcc39998012d3d5a.jpg',
-      'https://i.pinimg.com/1200x/0b/e9/0b/0be90bc9080c466bda337455f4eda0e5.jpg',
-      'https://i.pinimg.com/736x/bd/c6/ea/bdc6eae3f506497bb2510dd40c7a6850.jpg',
-      'https://i.pinimg.com/736x/98/50/e3/9850e34b4d4ca6bc8ecfdfb87de4e2f0.jpg',
-    ],
+    
     badge: '15% OFF',
     description: 'Professional Long-Range Aerial Photography — No Phone Required. The A19 Pro is built for creators seeking high-end flight features without relying on a smartphone screen. Equipped with a remote controller featuring an integrated HD screen, it streams real-time 5G Wi-Fi FPV directly to your hands. Featuring Brushless Motors, GPS positioning, 90° electronically adjustable camera, and smart auto-return, the A19 Pro delivers long-range stability and smooth high-resolution video.',
     specs: [
@@ -82,11 +77,7 @@ export const featuredProducts = [
     rating: 4.7,
     reviews: 664,
     image: 'https://i.pinimg.com/736x/98/50/e3/9850e34b4d4ca6bc8ecfdfb87de4e2f0.jpg',
-    gallery: [
-      'https://i.pinimg.com/736x/98/50/e3/9850e34b4d4ca6bc8ecfdfb87de4e2f0.jpg',
-      'https://i.pinimg.com/1200x/0b/e9/0b/0be90bc9080c466bda337455f4eda0e5.jpg',
-      'https://i.pinimg.com/1200x/11/f7/96/11f7966185c95156dcc39998012d3d5a.jpg',
-    ],
+   
     badge: 'New',
     description: 'Futuristic Design. Brushless Speed. 180° Electric Camera Control. Stand out in the skies with the A21 4-Axis Quadcopter. Inspired by futuristic "Mecha" armor design, this drone features a 180° electrically adjustable camera lens that allows you to shoot forward, downwards, and even upwards. Equipped with powerful 1104 Brushless Motors and an Optical Flow Hovering System, it holds position effortlessly indoors and outdoors.',
     specs: [
@@ -109,16 +100,12 @@ export const featuredProducts = [
     id: 4,
     categoryId: 1,
     name: 'ANYRC Pocket Mini RC Drone',
-    price: 35000,
+    price: 1000,
     oldPrice: 45000,
     rating: 4.6,
     reviews: 1365,
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6vKwUxgKw5xBore3GXGQlAIf3R7RyCjsIh8DtkfZhUsxWEsz_UDACcL4&s=10',
-    gallery: [
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6vKwUxgKw5xBore3GXGQlAIf3R7RyCjsIh8DtkfZhUsxWEsz_UDACcL4&s=10',
-      'https://i.pinimg.com/1200x/0b/e9/0b/0be90bc9080c466bda337455f4eda0e5.jpg',
-      'https://i.pinimg.com/1200x/11/f7/96/11f7966185c95156dcc39998012d3d5a.jpg',
-    ],
+    
     badge: '25% OFF',
     description: 'Pocket-Sized Fun — Instant Takeoff, Easy Controls & Stunt Roll Power. Designed for beginners and kids, the ANYRC Mini Drone combines ultra-compact folding arms with easy-to-learn flight controls. Featuring Altitude Hold, One-Key Takeoff/Landing, and Headless Mode, flying is simple right out of the box. Capture fun aerial photos using the onboard HD camera and stream real-time video directly to your smartphone via Wi-Fi.',
     specs: [
@@ -217,11 +204,7 @@ export const featuredProducts = [
     rating: 4.8,
     reviews: 1123,
     image: 'https://i.pinimg.com/1200x/ba/aa/45/baaa456c24de8917e886a7adce16fbc3.jpg',
-    gallery: [
-      'https://i.pinimg.com/1200x/ba/aa/45/baaa456c24de8917e886a7adce16fbc3.jpg',
-      'https://i.pinimg.com/1200x/dd/f3/4f/ddf34f47fba53dcce187782a66b33a58.jpg',
-      
-    ],
+    
     badge: '20% OFF',
     description: 'Big Screen Powerhouse — 20,000+ Games up to PS2 & PSP. Built for serious gamers who want an immersive handheld experience, the M28 combines a massive 7.1-inch HD IPS screen with an 8-core processor capable of running heavy 3D titles. With over 20,000 games pre-loaded across 30+ emulator systems, it handles 3D retro systems like PlayStation 2, PSP, Dreamcast, and N64. Featuring RGB joysticks and dual vibration motors, it delivers modern console-grade controls.',
     specs: [
