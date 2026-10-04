@@ -3,48 +3,46 @@ import { createContext, useContext, useState, useEffect } from 'react';
 const AdminContext = createContext();
 
 export const AdminProvider = ({ children }) => {
-  const [isFlashSaleOn, setIsFlashSaleOn] = useState(() => {
-    const saved = localStorage.getItem('isFlashSaleOn');
-    return saved ? JSON.parse(saved) : true;
-  });
-
-  const [isNewArrivalsOn, setIsNewArrivalsOn] = useState(() => {
-    const saved = localStorage.getItem('isNewArrivalsOn');
-    return saved ? JSON.parse(saved) : true;
-  });
+  // 🔒 Locked ON — features are always enabled
+  const [isFlashSaleOn] = useState(true);
+  const [isNewArrivalsOn] = useState(true);
 
   const [newArrivalIds, setNewArrivalIds] = useState(() => {
     const saved = localStorage.getItem('newArrivalIds');
-    return saved ? JSON.parse(saved) : [1, 2];
+    return saved ? JSON.parse(saved) : [5, 6, 7]; // Default: all game consoles
   });
 
-  // NEW: Flash Sale End Time (Default is 3 days from now)
   const [flashSaleEndTime, setFlashSaleEndTime] = useState(() => {
     const saved = localStorage.getItem('flashSaleEndTime');
     if (saved) return parseInt(saved, 10);
-    return new Date().getTime() + (3 * 24 * 60 * 60 * 1000); 
+    // Default: 30 days from now
+    return new Date().getTime() + (30 * 24 * 60 * 60 * 1000);
   });
 
   useEffect(() => {
-    localStorage.setItem('isFlashSaleOn', JSON.stringify(isFlashSaleOn));
-    localStorage.setItem('isNewArrivalsOn', JSON.stringify(isNewArrivalsOn));
     localStorage.setItem('newArrivalIds', JSON.stringify(newArrivalIds));
     localStorage.setItem('flashSaleEndTime', flashSaleEndTime.toString());
-  }, [isFlashSaleOn, isNewArrivalsOn, newArrivalIds, flashSaleEndTime]);
+  }, [newArrivalIds, flashSaleEndTime]);
 
-  const toggleFlashSale = () => setIsFlashSaleOn(prev => !prev);
-  const toggleNewArrivals = () => setIsNewArrivalsOn(prev => !prev);
-  
+  // Kept as no-ops so existing buttons don't crash
+  const toggleFlashSale = () => {
+    alert('Flash Sale is locked to ON by default.');
+  };
+
+  const toggleNewArrivals = () => {
+    alert('New Arrivals is locked to ON by default.');
+  };
+
   const toggleNewArrivalProduct = (productId) => {
-    setNewArrivalIds(prev => 
-      prev.includes(productId) ? prev.filter(id => id !== productId) : [...prev, productId]
+    setNewArrivalIds(prev =>
+      prev.includes(productId)
+        ? prev.filter(id => id !== productId)
+        : [...prev, productId]
     );
   };
 
-  // NEW: Function to reset the timer (e.g., start a new sale)
   const resetFlashSaleTimer = () => {
-    setFlashSaleEndTime(new Date().getTime() + (3 * 24 * 60 * 60 * 1000));
-    setIsFlashSaleOn(true);
+    setFlashSaleEndTime(new Date().getTime() + (30 * 24 * 60 * 60 * 1000));
   };
 
   return (
@@ -52,7 +50,7 @@ export const AdminProvider = ({ children }) => {
       isFlashSaleOn, toggleFlashSale,
       isNewArrivalsOn, toggleNewArrivals,
       newArrivalIds, toggleNewArrivalProduct,
-      flashSaleEndTime, resetFlashSaleTimer
+      flashSaleEndTime, resetFlashSaleTimer,
     }}>
       {children}
     </AdminContext.Provider>
