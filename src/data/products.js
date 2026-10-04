@@ -1,366 +1,211 @@
-import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import {
-  ShoppingCart, Heart, Star, Truck, RotateCcw, ShieldCheck,
-  Minus, Plus, ChevronLeft, ChevronRight, Share2
-} from 'lucide-react';
+export const categories = [
+  { id: 1, name: 'Drones', image: 'https://images.unsplash.com/photo-1579829366248-204fe8413f31?auto=format&fit=crop&q=80&w=200&h=200' },
+  { id: 2, name: 'Handheld Games', image: 'https://images.unsplash.com/photo-1531525645387-7f14be1bdbbd?auto=format&fit=crop&q=80&w=200&h=200' },
+];
 
-// Custom SVG brand icons (Lucide removed these)
-const FacebookIcon = ({ size = 16 }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-  </svg>
-);
+export const featuredProducts = [
+  // ==============================
+  // CATEGORY 1 — DRONES
+  // ==============================
+  {
+    id: 1,
+    categoryId: 1,
+    name: 'GT3 Pro Drone',
+    price: 50000,
+    oldPrice: 60000,
+    rating: 4.8,
+    reviews: 1248,
+    image: 'https://i.pinimg.com/1200x/0b/e9/0b/0be90bc9080c466bda337455f4eda0e5.jpg',
+    gallery: [
+      'https://i.pinimg.com/1200x/0b/e9/0b/0be90bc9080c466bda337455f4eda0e5.jpg',
+      'https://i.pinimg.com/1200x/11/f7/96/11f7966185c95156dcc39998012d3d5a.jpg',
+      'https://i.pinimg.com/736x/98/50/e3/9850e34b4d4ca6bc8ecfdfb87de4e2f0.jpg',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6vKwUxgKw5xBore3GXGQlAIf3R7RyCjsIh8DtkfZhUsxWEsz_UDACcL4&s=10',
+    ],
+    badge: '20% OFF',
+    description: 'The GT3 Pro is our flagship drone with 4K camera, 30-minute flight time, and GPS stability. Perfect for aerial photography, videography, and weekend adventures.',
+    specs: [
+      '4K UHD camera with 3-axis gimbal',
+      '30-minute max flight time',
+      'GPS return-to-home failsafe',
+      'Foldable compact design',
+      'Range: up to 5km',
+      'Weight: 249g (no registration required)',
+    ],
+    delivery: 'Delivered within 2-4 business days nationwide. Free shipping on orders over ₦100,000.',
+  },
+  {
+    id: 2,
+    categoryId: 1,
+    name: 'A19 Pro Drone',
+    price: 120000,
+    oldPrice: 150000,
+    rating: 4.9,
+    reviews: 892,
+    image: 'https://i.pinimg.com/1200x/11/f7/96/11f7966185c95156dcc39998012d3d5a.jpg',
+    gallery: [
+      'https://i.pinimg.com/1200x/11/f7/96/11f7966185c95156dcc39998012d3d5a.jpg',
+      'https://i.pinimg.com/1200x/0b/e9/0b/0be90bc9080c466bda337455f4eda0e5.jpg',
+      'https://i.pinimg.com/736x/bd/c6/ea/bdc6eae3f506497bb2510dd40c7a6850.jpg',
+    ],
+    badge: '15% OFF',
+    description: 'The A19 Pro is a professional-grade drone with obstacle avoidance, 5.4K camera, and 40-minute flight time. Built for creators who demand the best.',
+    specs: [
+      '5.4K camera with 1-inch sensor',
+      '40-minute flight time',
+      '360° obstacle avoidance',
+      'ActiveTrack 5.0 subject following',
+      'Range: up to 12km',
+      'Live video transmission at 1080p',
+    ],
+    delivery: 'Delivered within 2-4 business days nationwide. Free shipping on orders over ₦100,000.',
+  },
+  {
+    id: 3,
+    categoryId: 1,
+    name: 'A21 4-Axis Drone',
+    price: 70000,
+    oldPrice: 80000,
+    rating: 4.7,
+    reviews: 664,
+    image: 'https://i.pinimg.com/736x/98/50/e3/9850e34b4d4ca6bc8ecfdfb87de4e2f0.jpg',
+    gallery: [
+      'https://i.pinimg.com/736x/98/50/e3/9850e34b4d4ca6bc8ecfdfb87de4e2f0.jpg',
+      'https://i.pinimg.com/1200x/0b/e9/0b/0be90bc9080c466bda337455f4eda0e5.jpg',
+    ],
+    badge: 'New',
+    description: 'A versatile 4-axis drone perfect for beginners and hobbyists. Features a 2.7K camera, headless mode, and one-key return.',
+    specs: [
+      '2.7K HD camera',
+      '25-minute flight time',
+      'Headless mode for beginners',
+      'One-key takeoff and landing',
+      'Range: up to 1km',
+      'Brushless motors for stability',
+    ],
+    delivery: 'Delivered within 2-4 business days nationwide. Free shipping on orders over ₦100,000.',
+  },
+  {
+    id: 4,
+    categoryId: 1,
+    name: 'Anyrc Mini Drone',
+    price: 35000,
+    oldPrice: 45000,
+    rating: 4.6,
+    reviews: 1365,
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6vKwUxgKw5xBore3GXGQlAIf3R7RyCjsIh8DtkfZhUsxWEsz_UDACcL4&s=10',
+    gallery: [
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6vKwUxgKw5xBore3GXGQlAIf3R7RyCjsIh8DtkfZhUsxWEsz_UDACcL4&s=10',
+    ],
+    badge: '25% OFF',
+    description: 'The Anyrc Mini is a palm-sized drone perfect for indoor flying and beginners. Includes altitude hold, gesture control, and one-key return.',
+    specs: [
+      '720p HD camera',
+      '15-minute flight time',
+      'Altitude hold and gesture control',
+      'One-key return to home',
+      'Range: up to 100m',
+      'Palm-sized, super portable',
+    ],
+    delivery: 'Delivered within 2-4 business days nationwide. Free shipping on orders over ₦100,000.',
+  },
 
-const TwitterIcon = ({ size = 16 }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
-  </svg>
-);
-
-const InstagramIcon = ({ size = 16 }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
-  </svg>
-);
-
-import { featuredProducts } from '../data/products';
-import { useCart } from '../context/CartContext';
-import ProductCard from '../components/ProductCard';
-
-const RECENTLY_VIEWED_KEY = 'hallo_recently_viewed';
-
-export default function ProductDetailPage() {
-  const { productId } = useParams();
-  const { addToCart } = useCart();
-
-  const product = featuredProducts.find(p => p.id === parseInt(productId));
-
-  const [selectedImage, setSelectedImage] = useState(0);
-  const [quantity, setQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState('info');
-  const [wishlisted, setWishlisted] = useState(false);
-  const [recentlyViewed, setRecentlyViewed] = useState([]);
-
-  // Save to recently viewed + load history
-  useEffect(() => {
-    if (!product) return;
-
-    try {
-      const stored = JSON.parse(localStorage.getItem(RECENTLY_VIEWED_KEY) || '[]');
-      const filtered = stored.filter(id => id !== product.id);
-      const updated = [product.id, ...filtered].slice(0, 6);
-      localStorage.setItem(RECENTLY_VIEWED_KEY, JSON.stringify(updated));
-      setRecentlyViewed(updated);
-    } catch {
-      setRecentlyViewed([product.id]);
-    }
-
-    // Reset UI on product change
-    setSelectedImage(0);
-    setQuantity(1);
-    setActiveTab('info');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [product]);
-
-  if (!product) {
-    return (
-      <div className="container section" style={{ textAlign: 'center', padding: '4rem 0' }}>
-        <h2 className="section-title">Product not found</h2>
-        <Link to="/" className="btn-primary" style={{ display: 'inline-flex', marginTop: '1rem' }}>
-          Back to Home
-        </Link>
-      </div>
-    );
-  }
-
-  const gallery = product.gallery || [product.image];
-  const discount = product.oldPrice
-    ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
-    : 0;
-
-  const related = featuredProducts
-    .filter(p => p.categoryId === product.categoryId && p.id !== product.id)
-    .slice(0, 4);
-
-  const recentProducts = recentlyViewed
-    .filter(id => id !== product.id)
-    .map(id => featuredProducts.find(p => p.id === id))
-    .filter(Boolean)
-    .slice(0, 5);
-
-  const handleAddToCart = () => {
-    for (let i = 0; i < quantity; i++) {
-      addToCart(product);
-    }
-  };
-
-  const goToImage = (dir) => {
-    setSelectedImage(prev => {
-      if (dir === 'next') return (prev + 1) % gallery.length;
-      return (prev - 1 + gallery.length) % gallery.length;
-    });
-  };
-
-  const shareUrl = `https://hallo-stores-global.vercel.app/product/${product.id}`;
-  const shareText = `Check out ${product.name} on Hallo Stores!`;
-
-  return (
-    <div className="container section">
-      {/* Breadcrumb */}
-      <nav className="breadcrumb">
-        <Link to="/">Home</Link>
-        <span>/</span>
-        <Link to="/categories">Shop</Link>
-        <span>/</span>
-        <span>{product.name}</span>
-      </nav>
-
-      {/* Product Main Section */}
-      <div className="product-detail-grid">
-        {/* LEFT: Image Gallery */}
-        <div className="product-gallery">
-          <div className="product-main-image">
-            <img src={gallery[selectedImage]} alt={product.name} />
-
-            {gallery.length > 1 && (
-              <>
-                <button className="gallery-nav prev" onClick={() => goToImage('prev')} aria-label="Previous">
-                  <ChevronLeft size={20} />
-                </button>
-                <button className="gallery-nav next" onClick={() => goToImage('next')} aria-label="Next">
-                  <ChevronRight size={20} />
-                </button>
-              </>
-            )}
-
-            {product.badge && (
-              <span className={`badge ${product.badge.includes('OFF') ? 'red' : 'blue'}`}>
-                {product.badge}
-              </span>
-            )}
-          </div>
-
-          {gallery.length > 1 && (
-            <div className="product-thumbnails">
-              {gallery.map((img, idx) => (
-                <button
-                  key={idx}
-                  className={`thumbnail ${selectedImage === idx ? 'active' : ''}`}
-                  onClick={() => setSelectedImage(idx)}
-                >
-                  <img src={img} alt={`${product.name} view ${idx + 1}`} />
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* RIGHT: Product Info */}
-        <div className="product-info">
-          <h1 className="product-detail-title">{product.name}</h1>
-
-          {/* Rating */}
-          <div className="product-detail-rating">
-            <div className="stars-row">
-              {[1, 2, 3, 4, 5].map(i => (
-                <Star
-                  key={i}
-                  size={16}
-                  fill={i <= Math.round(product.rating) ? '#F59E0B' : 'none'}
-                  color="#F59E0B"
-                />
-              ))}
-            </div>
-            <span className="rating-text">
-              {product.rating} ({product.reviews.toLocaleString()} reviews)
-            </span>
-          </div>
-
-          {/* Price */}
-          <div className="product-detail-price">
-            <span className="current">₦{product.price.toLocaleString()}</span>
-            {product.oldPrice && (
-              <>
-                <span className="old">₦{product.oldPrice.toLocaleString()}</span>
-                <span className="discount-badge-inline">-{discount}%</span>
-              </>
-            )}
-          </div>
-
-          {/* Short description */}
-          <p className="product-detail-desc">{product.description}</p>
-
-          {/* Quantity */}
-          <div className="product-option">
-            <label className="option-label">Quantity</label>
-            <div className="quantity-selector">
-              <button
-                onClick={() => setQuantity(q => Math.max(1, q - 1))}
-                disabled={quantity <= 1}
-                aria-label="Decrease"
-              >
-                <Minus size={14} />
-              </button>
-              <span>{quantity}</span>
-              <button onClick={() => setQuantity(q => q + 1)} aria-label="Increase">
-                <Plus size={14} />
-              </button>
-            </div>
-          </div>
-
-          {/* Add to Cart + Wishlist */}
-          <div className="product-actions-row">
-            <button className="add-to-cart-detail" onClick={handleAddToCart}>
-              <ShoppingCart size={18} />
-              Add to Cart — ₦{(product.price * quantity).toLocaleString()}
-            </button>
-            <button
-              className={`wishlist-detail-btn ${wishlisted ? 'active' : ''}`}
-              onClick={() => setWishlisted(!wishlisted)}
-              aria-label="Add to wishlist"
-            >
-              <Heart size={18} fill={wishlisted ? 'currentColor' : 'none'} />
-            </button>
-          </div>
-
-          {/* Social Share */}
-          <div className="product-share">
-            <span>Share:</span>
-            <a href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`} target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">
-              <FacebookIcon size={16} />
-            </a>
-            <a href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}`} target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter">
-              <TwitterIcon size={16} />
-            </a>
-            <a href={`https://www.instagram.com/hallostore2026`} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <InstagramIcon size={16} />
-            </a>
-            <button
-              onClick={() => {
-                navigator.clipboard?.writeText(shareUrl);
-                alert('Link copied!');
-              }}
-              aria-label="Copy link"
-            >
-              <Share2 size={16} />
-            </button>
-          </div>
-
-          {/* Trust strip */}
-          <div className="product-trust-strip">
-            <div><Truck size={16} /> <span>Fast delivery</span></div>
-            <div><RotateCcw size={16} /> <span>Returns accepted</span></div>
-            <div><ShieldCheck size={16} /> <span>Secure payment</span></div>
-          </div>
-        </div>
-      </div>
-
-      {/* Tabs Section */}
-      <div className="product-tabs">
-        <div className="product-tabs-header">
-          <button className={activeTab === 'info' ? 'active' : ''} onClick={() => setActiveTab('info')}>
-            Product Info
-          </button>
-          <button className={activeTab === 'delivery' ? 'active' : ''} onClick={() => setActiveTab('delivery')}>
-            Delivery & Returns
-          </button>
-          <button className={activeTab === 'reviews' ? 'active' : ''} onClick={() => setActiveTab('reviews')}>
-            Reviews ({product.reviews.toLocaleString()})
-          </button>
-        </div>
-
-        <div className="product-tabs-body">
-          {activeTab === 'info' && (
-            <div>
-              <h4>Specifications</h4>
-              <ul className="specs-list">
-                {(product.specs || []).map((spec, i) => (
-                  <li key={i}>{spec}</li>
-                ))}
-              </ul>
-
-              {product.highlights && product.highlights.length > 0 && (
-                <>
-                  <h4>Supported Systems & Popular Games</h4>
-                  <ul className="specs-list">
-                    {product.highlights.map((h, i) => (
-                      <li key={i}>{h}</li>
-                    ))}
-                  </ul>
-                </>
-              )}
-
-              <p className="product-long-desc">{product.description}</p>
-            </div>
-          )}
-
-          {activeTab === 'delivery' && (
-            <div>
-              <h4>Delivery Information</h4>
-              <p>{product.delivery || 'Delivered within 2-4 business days nationwide.'}</p>
-              <h4>Returns Policy</h4>
-              <p>We accept returns within 7 days of delivery if the item is unused and in its original packaging. Contact us on WhatsApp to start a return.</p>
-            </div>
-          )}
-
-          {activeTab === 'reviews' && (
-            <div>
-              <div className="reviews-summary">
-                <div className="reviews-average">
-                  <div className="big-rating">{product.rating.toFixed(1)}</div>
-                  <div className="stars-row">
-                    {[1, 2, 3, 4, 5].map(i => (
-                      <Star key={i} size={18} fill={i <= Math.round(product.rating) ? '#F59E0B' : 'none'} color="#F59E0B" />
-                    ))}
-                  </div>
-                  <div className="review-count">Based on {product.reviews.toLocaleString()} reviews</div>
-                </div>
-                <div className="reviews-cta">
-                  <p>Enjoying this product? Leave a review and help other shoppers.</p>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Related Products */}
-      {related.length > 0 && (
-        <section className="product-section">
-          <div className="section-header">
-            <h2 className="section-title">May We Suggest</h2>
-            <Link to="/categories" className="view-all">View All</Link>
-          </div>
-          <div className="products-grid">
-            {related.map(p => (
-              <ProductCard key={p.id} product={p} />
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* Recently Viewed */}
-      {recentProducts.length > 0 && (
-        <section className="product-section">
-          <div className="section-header">
-            <h2 className="section-title">Your Recently Viewed Products</h2>
-          </div>
-          <div className="recently-viewed-grid">
-            {recentProducts.map(p => (
-              <Link to={`/product/${p.id}`} key={p.id} className="recently-viewed-item">
-                <div className="recently-viewed-image">
-                  <img src={p.image} alt={p.name} />
-                </div>
-                <p className="recently-viewed-name">{p.name}</p>
-                <p className="recently-viewed-price">₦{p.price.toLocaleString()}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
-    </div>
-  );
-}
+  // ==============================
+  // CATEGORY 2 — HANDHELD GAMES
+  // ==============================
+  {
+    id: 5,
+    categoryId: 2,
+    name: 'R36S Retro Handheld Gaming Console',
+    price: 56000,
+    oldPrice: 70000,
+    rating: 4.8,
+    reviews: 1123,
+    image: 'https://i.pinimg.com/736x/bd/c6/ea/bdc6eae3f506497bb2510dd40c7a6850.jpg',
+    gallery: [
+      'https://i.pinimg.com/736x/bd/c6/ea/bdc6eae3f506497bb2510dd40c7a6850.jpg',
+      'https://i.pinimg.com/736x/62/8b/7f/628b7f14ecd2d1740f7f0b99c4fb0e44.jpg',
+      'https://i.pinimg.com/1200x/4d/71/aa/4d71aa4331033401382edbbdfd608b6c.jpg',
+    ],
+    badge: '20% OFF',
+    description: 'Ultimate Pocket Emulation — 15,000+ Classic Games in the Palm of Your Hand. The R36S sets the benchmark for budget retro handhelds. Powered by a RK3326 Quad-Core 64-bit processor and running on ArkOS (Linux), it supports 15,000+ classic titles across 20+ retro gaming platforms. Equipped with dual analog joysticks and a sharp 3.5" IPS display, it runs 2D classics and early 3D PlayStation/N64 titles.',
+    specs: [
+      'Display: 3.5-inch IPS (640 × 480)',
+      'Processor & RAM: RK3326 Quad-Core 1.5GHz / 1GB DDR3L',
+      'Game Count: 15,000+ Preloaded Games',
+      'Storage: 64GB / 128GB MicroSD (Expandable to 256GB)',
+      'Battery: 3200mAh (Up to 6 hours)',
+      'Supports: PS1, N64, GBA, Arcade/MAME, SNES, PSP',
+    ],
+    highlights: [
+      'PlayStation 1 (PS1): Tekken 3, Castlevania: Symphony of the Night, Crash Bandicoot, Metal Gear Solid.',
+      'Nintendo 64 (N64): Super Mario 64, Mario Kart 64, Legend of Zelda: Ocarina of Time.',
+      'Game Boy Advance (GBA): Pokémon Emerald, Metroid Fusion, Castlevania: Aria of Sorrow.',
+      'Arcade & MAME: Metal Slug X, Street Fighter III 3rd Strike, Cadillacs and Dinosaurs.',
+      'Super Nintendo (SNES): Chrono Trigger, Super Mario World, Super Metroid.',
+      'PSP (Playable): God of War: Chains of Olympus, Patapon.',
+    ],
+    delivery: 'Delivered within 2-4 business days nationwide. Free shipping on orders over ₦100,000.',
+  },
+  {
+    id: 6,
+    categoryId: 2,
+    name: 'SUP 400-in-1 Retro Game Box',
+    price: 16000,
+    oldPrice: 20000,
+    rating: 4.9,
+    reviews: 456,
+    image: 'https://i.pinimg.com/1200x/da/5c/7d/da5c7d24c61c312c9f64aa74687f8478.jpg',
+    gallery: [
+      'https://i.pinimg.com/1200x/da/5c/7d/da5c7d24c61c312c9f64aa74687f8478.jpg',
+    ],
+    badge: '30% OFF',
+    description: 'Pure 8-Bit Nostalgia — 400 Arcade Classics Ready to Play. Revisit the golden age of 8-bit gaming with the SUP 400-in-1 Game Console. Lightweight, compact, and pre-loaded with 400 classic arcade, shooter, and platforming games, this handheld requires no memory cards or game downloads. Plug it directly into your TV via the included AV cable for big-screen multiplayer action.',
+    specs: [
+      'Display: 3.0-inch Color LCD Screen',
+      'Game Count: 400 Built-in 8-Bit NES/Famicom Games',
+      'Connectivity: 3.5mm AV-Out to TV, Micro-USB Charging Port',
+      'Battery: 600mAh Rechargeable Lithium-Ion',
+      'Includes: AV Cable & USB Cable',
+      'No memory cards or downloads needed',
+    ],
+    highlights: [
+      'Platformers & Action: Super Mario Bros., Super Mario Bros. 3, Donkey Kong, Contra, Super C.',
+      'Arcade & Shooters: Galaga, Space Invaders, Pac-Man, Road Fighter, Excitebike.',
+      'Fighting & Beat \'Em Ups: Double Dragon 2, Mighty Final Fight, Teenage Mutant Ninja Turtles.',
+      'Puzzle & Casual: Tetris, Bubble Bobble, Doctor Mario, Bomber Man.',
+    ],
+    delivery: 'Delivered within 2-4 business days nationwide. Free shipping on orders over ₦100,000.',
+  },
+  {
+    id: 7,
+    categoryId: 2,
+    name: 'M28 7.1" HD Retro Gaming Console',
+    price: 200000,
+    oldPrice: 250000,
+    rating: 4.8,
+    reviews: 1123,
+    image: 'https://i.pinimg.com/1200x/ba/aa/45/baaa456c24de8917e886a7adce16fbc3.jpg',
+    gallery: [
+      'https://i.pinimg.com/1200x/ba/aa/45/baaa456c24de8917e886a7adce16fbc3.jpg',
+    ],
+    badge: '20% OFF',
+    description: 'Big Screen Powerhouse — 20,000+ Games up to PS2 & PSP. Built for serious gamers who want an immersive handheld experience, the M28 combines a massive 7.1-inch HD IPS screen with an 8-core processor capable of running heavy 3D titles. With over 20,000 games pre-loaded across 30+ emulator systems, it handles 3D retro systems like PlayStation 2, PSP, Dreamcast, and N64. Featuring RGB joysticks and dual vibration motors, it delivers modern console-grade controls.',
+    specs: [
+      'Display: 7.1-inch IPS HD (1024 × 600)',
+      'Processor: 8-Core CPU (2x Cortex A75 + 6x Cortex A55 @ 2.0GHz)',
+      'GPU & RAM: Mali-G52 GPU / 2GB RAM',
+      'Game Count: 20,000+ Preloaded Games across 30+ Emulators',
+      'Features: RGB Lighting Joysticks, Dual Rumble Motors, Mini-HDMI 4K Output',
+      'Battery: 4000mAh',
+    ],
+    highlights: [
+      'PlayStation 2 (PS2): God of War II, Grand Theft Auto: San Andreas, Tekken 5.',
+      'PlayStation Portable (PSP): God of War: Ghost of Sparta, Monster Hunter Freedom Unite, Need for Speed: Most Wanted.',
+      'Sega Dreamcast: Sonic Adventure 2, Crazy Taxi, Marvel vs. Capcom 2.',
+      'Arcade & 3D Systems: Virtua Fighter, Tekken 3, Ridge Racer, Neo Geo titles.',
+      'Classic 2D Libraries: Full pre-loaded catalogs for GBA, SNES, Genesis, PS1, and N64.',
+    ],
+    delivery: 'Delivered within 2-4 business days nationwide. Free shipping on orders over ₦100,000.',
+  },
+];

@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import {
   ShoppingCart, Heart, Star, Truck, RotateCcw, ShieldCheck,
-  Minus, Plus, ChevronLeft, ChevronRight, Share2, Check
+  Minus, Plus, ChevronLeft, ChevronRight, Share2
 } from 'lucide-react';
 import { featuredProducts } from '../data/products';
 import { useCart } from '../context/CartContext';
 import ProductCard from '../components/ProductCard';
 
-// Custom SVG brand icons (Lucide removed these)
+// ──────────────────────────────────────────────────────────
+// Inline SVG brand icons (Lucide removed these)
+// These MUST come AFTER all imports
+// ──────────────────────────────────────────────────────────
+
 const FacebookIcon = ({ size = 16 }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
@@ -33,7 +37,6 @@ const RECENTLY_VIEWED_KEY = 'hallo_recently_viewed';
 
 export default function ProductDetailPage() {
   const { productId } = useParams();
-  const navigate = useNavigate();
   const { addToCart } = useCart();
 
   const product = featuredProducts.find(p => p.id === parseInt(productId));
@@ -217,7 +220,18 @@ export default function ProductDetailPage() {
                     aria-label={color.name}
                     title={color.name}
                   >
-                    {selectedColor === idx && <Check size={14} color={color.value === '#F1F5F9' || color.value === '#E2E8F0' ? '#0F172A' : '#FFFFFF'} />}
+                    {selectedColor === idx && (
+                      <span
+                        style={{
+                          display: 'block',
+                          width: '10px',
+                          height: '10px',
+                          borderRadius: '50%',
+                          backgroundColor: color.value === '#F1F5F9' || color.value === '#E2E8F0' ? '#0F172A' : '#FFFFFF',
+                          border: '1px solid rgba(15, 23, 42, 0.18)'
+                        }}
+                      />
+                    )}
                   </button>
                 ))}
               </div>
