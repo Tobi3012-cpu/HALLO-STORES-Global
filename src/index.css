@@ -2,25 +2,40 @@
    CSS Variables & Reset
    ========================================== */
 :root {
-  --primary: #2563EB;
-  --primary-hover: #1D4ED8;
-  --dark: #0F172A;
-  --bg-light: #F8F9FA;
+  /* === PRIMARY ACCENT (RED) === */
+  --primary: #DC2626;
+  --primary-hover: #B91C1C;
+
+  /* === DARK (navbar/footer) === */
+  --dark: #111827;
+
+  /* === SURFACES === */
+  --bg-light: #F9FAFB;
   --white: #FFFFFF;
-  --text-main: #1E293B;
-  --text-muted: #64748B;
-  --border: #E2E8F0;
-  --danger: #EF4444;
+
+  /* === TEXT === */
+  --text-main: #1F2937;
+  --text-muted: #6B7280;
+
+  /* === BORDERS === */
+  --border: #E5E7EB;
+
+  /* === STATUS COLORS === */
+  --danger: #DC2626;
   --warning: #F59E0B;
+  --success: #16A34A;
+
+  /* === SHADOWS === */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+  /* === RADII === */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
   --radius-full: 9999px;
 }
-
 * {
   margin: 0;
   padding: 0;
@@ -84,26 +99,105 @@ input, textarea, select { font-family: inherit; font-size: 16px; }
 .view-all:hover { text-decoration: underline; }
 
 /* ==========================================
-   Spinner
+   Drone Loader
    ========================================== */
 .spinner-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background: linear-gradient(180deg, #F8FAFC 0%, #EFF6FF 100%);
 }
 
-.spinner {
-  width: 56px;
-  height: 56px;
-  border: 4px solid var(--border);
-  border-top-color: var(--primary);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+.drone-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
 }
 
-@keyframes spin { to { transform: rotate(360deg); } }
+.drone-track {
+  position: relative;
+  width: 240px;
+  height: 70px;
+}
 
+/* Faint base track */
+.drone-track-line {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #E5E7EB;
+  border-radius: 2px;
+}
+
+/* Red flight path — uses scaleX, works everywhere */
+.drone-flight-line {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #DC2626 0%, #EF4444 100%);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(220, 38, 38, 0.45);
+  transform-origin: left center;
+  transform: scaleX(0.05);
+  animation: drawFlight 2.6s ease-in-out infinite;
+}
+
+/* Drone itself — moves via translateX */
+.drone-icon {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  animation: flyDrone 2.6s ease-in-out infinite;
+  filter: drop-shadow(0 6px 10px rgba(220, 38, 38, 0.25));
+  will-change: transform;
+}
+
+.drone-loader-text {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+  animation: pulseText 1.6s ease-in-out infinite;
+}
+
+/* --- Animations --- */
+
+@keyframes flyDrone {
+  0%   { transform: translateX(0) translateY(0); }
+  25%  { transform: translateX(55px) translateY(-3px); }
+  50%  { transform: translateX(210px) translateY(0); }
+  75%  { transform: translateX(55px) translateY(-3px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+@keyframes drawFlight {
+  0%   { transform: scaleX(0.05); }
+  50%  { transform: scaleX(1); }
+  100% { transform: scaleX(0.05); }
+}
+
+@keyframes pulseText {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 1; }
+}
+
+@media (max-width: 480px) {
+  .drone-track { width: 200px; }
+
+  @keyframes flyDrone {
+    0%   { transform: translateX(0) translateY(0); }
+    25%  { transform: translateX(45px) translateY(-3px); }
+    50%  { transform: translateX(170px) translateY(0); }
+    75%  { transform: translateX(45px) translateY(-3px); }
+    100% { transform: translateX(0) translateY(0); }
+  }
+}
 /* ==========================================
    Navbar
    ========================================== */

@@ -26,7 +26,7 @@ export const featuredProducts = [
     description: '68g Featherweight Aerial Rig — 3-Sided Obstacle Avoidance & 4K Dual Video. Weighing just 68 grams, the GT3 Foldable Drone packs high-end video features into an ultra-portable frame. Built with Three-Sided Obstacle Avoidance and an Optical Flow Positioning sensor, it actively avoids walls and obstacles while hovering smoothly. Complete with a 180° electric dual camera, it is the perfect lightweight companion for content creation on the go.',
     specs: [
       'Drone Weight: 68g (Folded Size: 13.6 x 11 x 4.7 cm)',
-      'Camera System: 4K HD Dual Camera with 180° Electric Tilt',
+      'Camera System:  Dual Camera with 180° Electric Tilt',
       'Safety Features: Infrared 3-Sided Obstacle Sensing + Emergency Stop',
       'Flight Time: Approx. 15 Minutes',
       'Control Distance: ~100 Meters Wi-Fi FPV Range',
@@ -53,7 +53,7 @@ export const featuredProducts = [
     badge: '15% OFF',
     description: 'Professional Long-Range Aerial Photography — No Phone Required. The A19 Pro is built for creators seeking high-end flight features without relying on a smartphone screen. Equipped with a remote controller featuring an integrated HD screen, it streams real-time 5G Wi-Fi FPV directly to your hands. Featuring Brushless Motors, GPS positioning, 90° electronically adjustable camera, and smart auto-return, the A19 Pro delivers long-range stability and smooth high-resolution video.',
     specs: [
-      'Camera & Transmission: 4K/8K Dual Camera (90° ESC) + 5G Live FPV Stream',
+      'Camera & Transmission: Dual Camera (180° ESC)',
       'Motors: Brushless Motors',
       'Battery & Flight Time: 7.4V 3000mAh Modular Battery (Up to 25–28 Minutes)',
       'Positioning System: Dual GPS + Optical Flow Positioning',
@@ -81,7 +81,7 @@ export const featuredProducts = [
     badge: 'New',
     description: 'Futuristic Design. Brushless Speed. 180° Electric Camera Control. Stand out in the skies with the A21 4-Axis Quadcopter. Inspired by futuristic "Mecha" armor design, this drone features a 180° electrically adjustable camera lens that allows you to shoot forward, downwards, and even upwards. Equipped with powerful 1104 Brushless Motors and an Optical Flow Hovering System, it holds position effortlessly indoors and outdoors.',
     specs: [
-      'Camera: 4K Dual Camera with 180° Remote Electric Angle Adjustment',
+      'Camera:  Dual Camera with 180° Remote Electric Angle Adjustment',
       'Motor Type: 1104 High-Speed Brushless Motors',
       'Flight System: Optical Flow Fixed-Point Hovering',
       'Weight & Dimensions: 150g Ultra-Light / 18cm x 15.5cm',
@@ -109,7 +109,7 @@ export const featuredProducts = [
     badge: '25% OFF',
     description: 'Pocket-Sized Fun — Instant Takeoff, Easy Controls & Stunt Roll Power. Designed for beginners and kids, the ANYRC Mini Drone combines ultra-compact folding arms with easy-to-learn flight controls. Featuring Altitude Hold, One-Key Takeoff/Landing, and Headless Mode, flying is simple right out of the box. Capture fun aerial photos using the onboard HD camera and stream real-time video directly to your smartphone via Wi-Fi.',
     specs: [
-      'Camera: HD Camera with Wi-Fi FPV Live Stream',
+      
       'Flight Time: Approx. 10–12 Minutes per battery',
       'Gyroscopic Stabilizer: 6-Axis Gyroscope',
       'Control Range: ~50–80 Meters',
